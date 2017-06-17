@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/hello', function() {
+    echo 'Hello world!';
+})->name('news.index');
+
+Route::match(['get', 'post'], '/hello/{name}', function($name) {
+    echo 'Hello ' . $name;
+})->where('name', '[0-9]+');
